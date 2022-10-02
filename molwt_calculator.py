@@ -1,23 +1,23 @@
-from aa_mass import aa_masses as aa
+from molwts import molwts
 
-def calc_mass(seq):
+def calc_molwt(sequence):
     """
     Calculate mass of peptide.
-    :param seq: Peptide sequence.
+    :param sequence (str): Peptide sequence.
     :return: molecular weight of peptide.
     """
     # Add 19 amu for C-terminal -OH, N-terminal -H, and H+
-    mass = 19.01784116688
+    mwt = 19.01784116688
     # Iterate though residues and sum masses
-    for residue in seq:
-        mass = mass + aa[residue]
+    for residue in sequence:
+        mwt += molwts[residue]
 
-    return mass
+    return mwt
 
 def main():
     sequence = input('Peptide sequence: ').upper()
-    mass = calc_mass(sequence)
-    print(sequence, mass)
+    mwt = calc_molwt(sequence)
+    print(sequence, mwt)
 
 if __name__ == "__main__":
     main()
